@@ -10,7 +10,11 @@ public class EmployeeModel
     /// <param name="Age"></param>
     /// <param name="DeptId"></param>
     public record Employee(int Id, string Name, int Age, int DeptId);
-    
-    
-    
+
+    /// <summary>
+    /// Department
+    /// </summary>
+    /// <param name="Id"></param>
+    /// <param name="Name"></param>
+    public record Department(int Id, string Name);
 }
