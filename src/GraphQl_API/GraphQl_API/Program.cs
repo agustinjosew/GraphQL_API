@@ -1,15 +1,28 @@
+using GraphQL;
+using GraphQl_API.Models;
+using GraphQl_API.Queries;
+using GraphQl_API.Services;
+using GraphQl_API.Services.Interfaces;
+using GraphQL.Types;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSingleton<IEmployeeService, EmployeeService>();
+builder.Services.AddSingleton<EmployeeModel.EmployeeDetailsType>();
+builder.Services.AddSingleton<EmployeeQuery>();
+builder.Services.AddSingleton<ISchema, EmployeeDetailsSchema>();
+
+// Work in progress for GraphQL
+builder.Services.AddGraphQL(TBD);
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
